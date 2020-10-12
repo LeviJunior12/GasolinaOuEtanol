@@ -49,22 +49,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calcResult() {
-        if (checkField()) {
-            getView().hideKeyboard()
-            cleanField()
-            Toast.makeText(this, getString(R.string.error_field), Toast.LENGTH_LONG)
-                .show()
-        } else {
-            getView().hideKeyboard()
-            setImage()
-            textGas = 0f
-            textEthanol = 0f
+        when {
+            checkField() -> {
+                getView().hideKeyboard()
+                cleanField()
+                Toast.makeText(this, getString(R.string.error_field), Toast.LENGTH_LONG)
+                    .show()
+            }
+            else -> {
+                getView().hideKeyboard()
+                setImage()
+                textGas = 0f
+                textEthanol = 0f
+            }
         }
     }
 
     private fun cleanField() {
         editTextGas.text.clear()
         editTextEthanol.text.clear()
+        textGas = 0f
+        textEthanol = 0f
         imageSet.setImageResource(R.drawable.empty_dice)
     }
 

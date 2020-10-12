@@ -16,7 +16,7 @@
         android:layout_marginTop="15dp"
         android:text="@string/question_info"
         android:textColor="@color/colorPrimary"
-        android:textSize="16dp" />
+        android:textSize="20dp" />
 
     <ImageView
         android:id="@+id/imageGas"
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/result"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:textColor="@color/colorPrimary" />
 
     <ImageView
