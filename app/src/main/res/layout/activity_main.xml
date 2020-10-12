@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/question_info"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/question_info"
         android:textColor="@color/colorPrimary"
-        android:textSize="15dp" />
+        android:textSize="16dp" />
 
     <ImageView
         android:id="@+id/imageGas"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/gasolina" />
+        app:srcCompat="@drawable/gasolina" />
 
     <EditText
         android:id="@+id/editTextGas"
@@ -37,14 +37,15 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/etanol" />
+        app:srcCompat="@drawable/etanol" />
 
     <EditText
         android:id="@+id/editTextEthanol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hidden_sugestion_ethanol"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:imeOptions="actionDone"/>
 
     <Button
         android:id="@+id/calc_btn"
@@ -58,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/result"
+        android:textSize="16dp"
         android:textColor="@color/colorPrimary" />
 
     <ImageView
@@ -65,7 +67,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        />
+        app:srcCompat="@drawable/empty_dice"
+        tools:src="@drawable/abasteca_etanol" />
 
 
 </LinearLayout>

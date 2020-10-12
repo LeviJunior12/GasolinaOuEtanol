@@ -6,4 +6,5 @@
     <string name="hidden_sugestion_ethanol">Coloque o valor da Etanol</string>
     <string name="compare">Comparar</string>
     <string name="result">Resultado</string>
+    <string name="error_field">Por favor Complete Os Campos Acima!</string>
 </resources>
