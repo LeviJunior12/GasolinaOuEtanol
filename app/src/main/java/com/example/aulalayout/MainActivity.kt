@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             calcResult()
         })
 
+        // Esse será o clique do botão no teclado virtual quando o metodo for done (Que pode ser alterado na activity com o atributo (android:imeOptions="actionDone"))
         editTextEthanol.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 calcResult()
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
     private fun calcResult() {
         when {
             checkField() -> {
+                // Aqui eu chamo o metodo para fechar o teclado virtual
                 getView().hideKeyboard()
                 cleanField()
                 Toast.makeText(this, getString(R.string.error_field), Toast.LENGTH_LONG)
@@ -104,11 +106,13 @@ class MainActivity : AppCompatActivity() {
         return (textEthanol / textGas) < 0.7
     }
 
+    // Executa a função de tirar o teclado da tela (chamando uma view/activity como referencia)
     private fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
 
+    // Encontra a view/activity atual que o usuário está no momento
     private fun getView(): View {
         return window.decorView.findViewById(android.R.id.content)
     }
