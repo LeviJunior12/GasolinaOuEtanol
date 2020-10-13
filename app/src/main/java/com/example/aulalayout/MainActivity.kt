@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -30,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
+        setSupportActionBar(toolbar)
+
         editTextGas = findViewById(R.id.editTextGas)
         editTextEthanol = findViewById(R.id.editTextEthanol)
         btnCalc = findViewById(R.id.calc_btn)
@@ -49,14 +53,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var itemView = item.itemId
+        when (itemView) {
+            R.id.refresh -> {
+                cleanField()
+                showToast(getString(R.string.refresh_msg))
+            }
+        }
+
+        return false
+    }
+
     private fun calcResult() {
         when {
             checkField() -> {
                 // Aqui eu chamo o metodo para fechar o teclado virtual
                 getView().hideKeyboard()
                 cleanField()
-                Toast.makeText(this, getString(R.string.error_field), Toast.LENGTH_LONG)
-                    .show()
+                showToast(getString(R.string.error_field))
             }
             else -> {
                 getView().hideKeyboard()
@@ -76,7 +96,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkField(): Boolean {
-        if(!checkFieldBlank()) {
+        if (!checkFieldBlank()) {
             textGas = editTextGas.text.toString().toFloat()
             textEthanol = editTextEthanol.text.toString().toFloat()
         }
@@ -104,6 +124,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun bestGas(): Boolean {
         return (textEthanol / textGas) < 0.7
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
     // Executa a função de tirar o teclado da tela (chamando uma view/activity como referencia)

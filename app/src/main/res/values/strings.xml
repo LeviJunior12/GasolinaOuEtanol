@@ -7,4 +7,6 @@
     <string name="compare">Comparar</string>
     <string name="result">Resultado</string>
     <string name="error_field">Por favor Complete Os Campos Acima!</string>
+    <string name="refresh">Remover</string>
+    <string name="refresh_msg">Os campos foram limpos!</string>
 </resources>
